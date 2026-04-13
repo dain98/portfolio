@@ -1,0 +1,7 @@
+services:
+  portfolio:
+    build: .
+    container_name: portfolio-next-1
+    ports:
+      - 3001:3000
+    restart: unless-stopped
