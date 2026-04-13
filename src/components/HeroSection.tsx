@@ -133,7 +133,7 @@ export default function HeroSection() {
           <p className="text-xl md:text-2xl text-[var(--text-body)] leading-relaxed mb-4">
             AI Engineer crafting intelligent systems by day,
             <br className="hidden md:block" />
-            tinkering with code since I was ten.
+            building things that just work.
           </p>
         </StaggerReveal>
 
