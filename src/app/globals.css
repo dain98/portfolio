@@ -1,26 +1,587 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Light theme (default) ─── */
+:root, html[data-theme="light"] {
+  --bg-cream: #faf6f0;
+  --bg-warm: #f3ece2;
+  --bg-latte: #e8ddd0;
+  --bg-card: #fffcf7;
+  --bg-dark: #1e1410;
+
+  --espresso: #2c1810;
+  --dark-roast: #3d261a;
+  --medium-roast: #5c3d2e;
+  --light-roast: #7a5c4f;
+
+  --terracotta: #c4653a;
+  --terracotta-soft: #d4845f;
+  --sage: #7a9178;
+  --sage-soft: #a3b8a1;
+  --foam: #f5efe6;
+  --caramel: #c8956c;
+  --cinnamon: #a0522d;
+
+  --text-primary: #2c1810;
+  --text-body: #5c3d2e;
+  --text-muted: #9a8578;
+  --text-light: #bfad9e;
+
+  --border-soft: #e2d5c5;
+  --border-warm: #d4c4b0;
+
+  --shadow-warm: 0 4px 24px rgba(44, 24, 16, 0.06);
+  --shadow-hover: 0 12px 40px rgba(44, 24, 16, 0.12);
+  --shadow-stamp: 2px 3px 0px rgba(44, 24, 16, 0.08);
+
+  --linen-fill: %23d4c4b0;
+  --linen-opacity: 0.15;
+  --menu-board-bg: var(--bg-dark);
+  --menu-board-text: var(--foam);
+  --menu-board-border: rgba(245, 239, 230, 0.08);
+  --menu-pill-bg: rgba(255, 255, 255, 0.05);
+  --menu-pill-border: rgba(255, 255, 255, 0.1);
+  --menu-divider: rgba(255, 255, 255, 0.1);
+  --menu-quote: rgba(255, 255, 255, 0.3);
+  --ring-opacity: 0.1;
+  --bean-opacity: 0.12;
+
+  --room-storefront-warm: #f5e6d0;
+  --room-counter-warm: #efe0cc;
+  --room-gallery-cool: #e8e2da;
+  --room-nook-warm: #e5d8c4;
+  --room-corner-dusk: #d9c8b8;
+
+  --shadow-deep: 0 20px 60px rgba(44, 24, 16, 0.18), 0 4px 12px rgba(44, 24, 16, 0.08);
+  --shadow-glow-warm: 0 0 40px rgba(200, 149, 108, 0.20), 0 0 80px rgba(200, 149, 108, 0.08);
+  --shadow-inset-depth: inset 0 2px 8px rgba(44, 24, 16, 0.06);
+}
+
+/* ─── Dark theme ─── */
+html[data-theme="dark"] {
+  --bg-cream: #1a120d;
+  --bg-warm: #211710;
+  --bg-latte: #2a1e14;
+  --bg-card: #241a12;
+  --bg-dark: #120c08;
+
+  --espresso: #f5efe6;
+  --dark-roast: #e8ddd0;
+  --medium-roast: #c4b5a3;
+  --light-roast: #9a8578;
+
+  --terracotta: #d4845f;
+  --terracotta-soft: #c4653a;
+  --sage: #8aab87;
+  --sage-soft: #6e8e6b;
+  --foam: #f5efe6;
+  --caramel: #d4a574;
+  --cinnamon: #c47a3a;
+
+  --text-primary: #f5efe6;
+  --text-body: #c4b5a3;
+  --text-muted: #8a7a6c;
+  --text-light: #5c4d40;
+
+  --border-soft: #352a20;
+  --border-warm: #443628;
+
+  --shadow-warm: 0 4px 24px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-stamp: 2px 3px 0px rgba(0, 0, 0, 0.15);
+
+  --linen-fill: %23f5efe6;
+  --linen-opacity: 0.06;
+  --menu-board-bg: #120c08;
+  --menu-board-text: var(--foam);
+  --menu-board-border: rgba(245, 239, 230, 0.06);
+  --menu-pill-bg: rgba(255, 255, 255, 0.05);
+  --menu-pill-border: rgba(255, 255, 255, 0.08);
+  --menu-divider: rgba(255, 255, 255, 0.08);
+  --menu-quote: rgba(255, 255, 255, 0.25);
+  --ring-opacity: 0.08;
+  --bean-opacity: 0.08;
+
+  --room-storefront-warm: #2a1e14;
+  --room-counter-warm: #2e2015;
+  --room-gallery-cool: #251e18;
+  --room-nook-warm: #2a1f16;
+  --room-corner-dusk: #1e1510;
+
+  --shadow-deep: 0 20px 60px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-glow-warm: 0 0 40px rgba(200, 149, 108, 0.12), 0 0 80px rgba(200, 149, 108, 0.05);
+  --shadow-inset-depth: inset 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg-cream);
+  --color-foreground: var(--text-primary);
+  --font-sans: 'Nunito', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-cream);
+  color: var(--text-primary);
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Linen paper texture overlay ─── */
+.linen::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.25;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4c4b0' fill-opacity='0.15'%3E%3Cpath d='M0 0h1v1H0zM4 4h1v1H4zM8 0h1v1H8zM0 8h1v1H0zM8 8h1v1H8zM16 0h1v1h-1zM16 8h1v1h-1zM0 16h1v1H0zM8 16h1v1H8zM16 16h1v1h-1zM24 0h1v1h-1zM24 8h1v1h-1zM24 16h1v1h-1zM0 24h1v1H0zM8 24h1v1H8zM16 24h1v1h-1zM24 24h1v1h-1zM32 0h1v1h-1zM32 8h1v1h-1zM32 16h1v1h-1zM32 24h1v1h-1zM0 32h1v1H0zM8 32h1v1H8zM16 32h1v1h-1zM24 32h1v1h-1zM32 32h1v1h-1z'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+html[data-theme="dark"] .linen::before {
+  opacity: 0.1;
+}
+
+/* ─── Keyframes ─── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(-3deg); }
+}
+
+@keyframes drift {
+  0% { transform: translateY(0) translateX(0) rotate(var(--start-rotate)); }
+  25% { transform: translateY(-30px) translateX(10px) rotate(calc(var(--start-rotate) + 8deg)); }
+  50% { transform: translateY(-15px) translateX(-8px) rotate(calc(var(--start-rotate) - 5deg)); }
+  75% { transform: translateY(-40px) translateX(5px) rotate(calc(var(--start-rotate) + 3deg)); }
+  100% { transform: translateY(0) translateX(0) rotate(var(--start-rotate)); }
+}
+
+@keyframes steam-curl {
+  0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+  15% { opacity: 0.6; transform: translateY(0) scale(1); }
+  40% { opacity: 0.45; transform: translateY(-12px) scale(1.05); }
+  70% { opacity: 0.2; transform: translateY(-28px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-44px) scale(1.15); }
+}
+
+@keyframes pour {
+  0% { height: 0; opacity: 0; }
+  20% { opacity: 1; }
+  100% { height: 100%; opacity: 1; }
+}
+
+@keyframes bean-spin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ─── Animation classes ─── */
+.animate-fade-up { animation: fade-up 0.7s ease-out forwards; opacity: 0; }
+.animate-fade-in { animation: fade-in 0.8s ease-out forwards; opacity: 0; }
+.animate-float { animation: float 5s ease-in-out infinite; }
+.animate-float-reverse { animation: float-reverse 6s ease-in-out infinite; }
+.animate-drift { animation: drift 12s ease-in-out infinite; }
+.animate-scale-in { animation: scale-in 0.6s ease-out forwards; opacity: 0; }
+
+/* ─── Scroll-triggered reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Steam curls ─── */
+.steam-curl {
+  animation: steam-curl 3s ease-out infinite;
+}
+
+/* ─── Hand-drawn underline ─── */
+.hand-drawn-underline {
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='12' viewBox='0 0 200 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 8C20 4 40 6 60 5C80 4 100 7 120 6C140 5 160 8 198 4' stroke='%23c4653a' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 100% 10px;
+  padding-bottom: 8px;
+}
+
+/* ─── Cafe card ─── */
+.cafe-card {
+  background: rgba(255, 252, 247, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  box-shadow: var(--shadow-warm), var(--shadow-inset-depth);
+  transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease, background-color 0.3s ease;
+}
+
+.cafe-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+  border-color: var(--terracotta-soft);
+}
+
+html[data-theme="dark"] .cafe-card {
+  background: rgba(36, 26, 18, 0.88);
+}
+
+/* ─── Coffee ring watermark ─── */
+.coffee-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid var(--border-warm);
+  opacity: var(--ring-opacity);
+  pointer-events: none;
+}
+
+/* ─── Bean divider ─── */
+.bean-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.bean-divider::before,
+.bean-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-warm), transparent);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--terracotta-soft);
+  color: white;
+}
+
+/* ─── Link hover ─── */
+.link-warm {
+  color: var(--terracotta);
+  text-decoration: none;
+  background-image: linear-gradient(var(--terracotta-soft), var(--terracotta-soft));
+  background-size: 0% 2px;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
+}
+
+.link-warm:hover {
+  background-size: 100% 2px;
+}
+
+/* ─── Menu board ─── */
+.menu-board {
+  background: var(--menu-board-bg);
+  color: var(--menu-board-text);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-board::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid var(--menu-board-border);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+/* ─── Stamp badge ─── */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  padding: 2px 10px;
+  font-family: 'DM Serif Display', serif;
+  transform: rotate(-2deg);
+  box-shadow: var(--shadow-stamp);
+  position: relative;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.stamp::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  opacity: 0.3;
+}
+
+/* ─── Wavy section divider ─── */
+.wave-divider {
+  position: relative;
+}
+
+.wave-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--bg-warm));
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+/* ─── Timeline pour effect ─── */
+.timeline-pour {
+  background: linear-gradient(180deg, var(--terracotta), var(--caramel), var(--border-warm));
+  animation: pour 1.5s ease-out forwards;
+}
+
+/* ─── Floating decorative elements ─── */
+.deco-bean {
+  position: absolute;
+  pointer-events: none;
+  opacity: var(--bean-opacity);
+}
+
+/* ─── Cafe room backgrounds ─── */
+.room-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.room-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Doorway transitions between rooms ─── */
+.doorway-divider {
+  position: relative;
+}
+
+.doorway-divider::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 140px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ─── Candle flame flicker ─── */
+@keyframes flicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.9; }
+  25% { transform: scaleY(1.1) scaleX(0.95); opacity: 1; }
+  50% { transform: scaleY(0.95) scaleX(1.05); opacity: 0.85; }
+  75% { transform: scaleY(1.05) scaleX(0.98); opacity: 0.95; }
+}
+
+.candle-flame {
+  animation: flicker 1.5s ease-in-out infinite;
+}
+
+/* ─── Open sign swing ─── */
+@keyframes sign-swing {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.sign-swing {
+  transform-origin: top center;
+  animation: sign-swing 3s ease-in-out infinite;
+}
+
+/* ─── Clothesline sway ─── */
+@keyframes line-sway {
+  0%, 100% { transform: rotate(-0.5deg); }
+  50% { transform: rotate(0.5deg); }
+}
+
+.line-sway {
+  transform-origin: left center;
+  animation: line-sway 4s ease-in-out infinite;
+}
+
+/* ─── Book spine wobble on hover ─── */
+.book-spine {
+  transition: transform 0.2s ease;
+}
+
+.book-spine:hover {
+  transform: translateX(-3px) rotate(-2deg);
+}
+
+/* ─── Brick pattern ─── */
+.brick-pattern {
+  background-image:
+    linear-gradient(to right, var(--border-warm) 0%, var(--border-warm) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-warm) 0%, var(--border-warm) 1px, transparent 1px);
+  background-size: 60px 28px;
+  background-position: 0 0, 30px 14px;
+  opacity: 0.25;
+}
+
+/* ─── Wood grain pattern ─── */
+.wood-grain {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 80px,
+    var(--border-warm) 80px,
+    var(--border-warm) 81px
+  );
+  opacity: 0.18;
+}
+
+/* ─── Wainscoting ─── */
+.wainscot-panel {
+  border: 1px solid var(--border-soft);
+  border-radius: 2px;
+  background: var(--bg-card);
+  box-shadow: inset 0 1px 0 var(--border-soft);
+}
+
+/* ─── Dark mode cafe adjustments ─── */
+html[data-theme="dark"] .brick-pattern {
+  opacity: 0.12;
+}
+
+html[data-theme="dark"] .wainscot-panel {
+  background: var(--bg-card);
+  border-color: var(--border-soft);
+}
+
+html[data-theme="dark"] .wood-grain {
+  opacity: 0.10;
+}
+
+html[data-theme="dark"] .book-spine {
+  opacity: 0.35;
+}
+
+/* ─── Room atmosphere utilities ─── */
+.room-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(44, 24, 16, 0.08) 100%);
+  z-index: 1;
+}
+
+.glass-card {
+  background: rgba(255, 252, 247, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 213, 197, 0.5);
+  border-radius: 16px;
+  box-shadow: var(--shadow-deep);
+}
+
+html[data-theme="dark"] .glass-card {
+  background: rgba(36, 26, 18, 0.85);
+  border-color: rgba(68, 54, 40, 0.5);
+}
+
+.doorway-fade {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 140px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.pendant-glow {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(200, 149, 108, 0.35) 0%, rgba(200, 149, 108, 0.10) 40%, transparent 70%);
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.light-cone {
+  position: absolute;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(200, 149, 108, 0.20) 0%, transparent 100%);
+  clip-path: polygon(30% 0%, 70% 0%, 90% 100%, 10% 100%);
 }
