@@ -1,3 +1,1 @@
-# dain.cafe
-
-Live at [dain.cafe](https://dain.cafe)
+[![dain.cafe](banner.svg)](https://dain.cafe)
