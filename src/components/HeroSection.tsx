@@ -2,40 +2,36 @@
 
 import StaggerReveal from "./StaggerReveal";
 
-function SteamWisp({ delay, duration, path, width, height, offsetX }: {
-  delay: string; duration: string; path: string; width: number; height: number; offsetX?: number;
-}) {
+function SteamPuff({ delay, x, size }: { delay: string; x: number; size: number }) {
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox={`0 0 ${width} ${height}`}
-      className="steam-curl"
-      style={{ animationDelay: delay, animationDuration: duration, marginLeft: offsetX ?? 0 }}
-    >
-      <path
-        d={path}
-        stroke="var(--border-warm)"
-        strokeWidth="1.8"
-        fill="none"
-        strokeLinecap="round"
-      />
-    </svg>
+    <div
+      className="steam-puff"
+      style={{
+        animationDelay: delay,
+        left: x,
+        width: size,
+        height: size,
+      }}
+    />
   );
 }
 
 function SteamAnimation() {
-  const wisps = [
-    { delay: "0s", duration: "3.2s", path: "M14 70 C4 58, 24 50, 12 38 C0 26, 22 18, 12 6 C8 2, 16 -2, 12 -8", width: 28, height: 78, offsetX: 0 },
-    { delay: "0.8s", duration: "2.8s", path: "M14 70 C24 56, 2 46, 14 34 C26 22, 4 12, 14 0 C16 -4, 10 -8, 14 -12", width: 28, height: 82, offsetX: 4 },
-    { delay: "1.5s", duration: "3.6s", path: "M12 70 C2 60, 22 52, 10 40 C-2 28, 20 20, 10 8 C6 2, 16 -2, 10 -6", width: 24, height: 76, offsetX: -2 },
-    { delay: "2.2s", duration: "3s", path: "M10 64 C18 54, 0 44, 12 32 C24 20, 4 10, 12 0", width: 24, height: 64, offsetX: 6 },
+  const puffs = [
+    { delay: "0s", x: 5, size: 26 },
+    { delay: "0.4s", x: 75, size: 24 },
+    { delay: "0.8s", x: 28, size: 28 },
+    { delay: "1.2s", x: 90, size: 22 },
+    { delay: "1.6s", x: 15, size: 24 },
+    { delay: "2s", x: 55, size: 26 },
+    { delay: "2.4s", x: 42, size: 24 },
+    { delay: "2.8s", x: 68, size: 22 },
   ];
 
   return (
-    <div className="flex justify-center items-end" style={{ height: "80px", marginBottom: "-8px" }}>
-      {wisps.map((w, i) => (
-        <SteamWisp key={i} {...w} />
+    <div className="absolute" style={{ width: "115px", bottom: "110px", left: "50%", transform: "translateX(calc(-50% - 8px))" }}>
+      {puffs.map((p, i) => (
+        <SteamPuff key={i} {...p} />
       ))}
     </div>
   );
@@ -44,9 +40,10 @@ function SteamAnimation() {
 function LatteArt() {
   return (
     <div className="relative animate-fade-up">
-      <SteamAnimation />
       {/* Cup */}
-      <svg width="180" height="150" viewBox="0 0 180 150" fill="none" className="mx-auto">
+      <div className="relative mx-auto" style={{ width: "180px", height: "150px" }}>
+        <SteamAnimation />
+        <svg width="180" height="150" viewBox="0 0 180 150" fill="none" className="relative z-10">
         {/* Saucer shadow */}
         <ellipse cx="82" cy="142" rx="72" ry="8" fill="var(--border-warm)" opacity="0.15" />
 
@@ -89,6 +86,7 @@ function LatteArt() {
         {/* Rim highlight */}
         <ellipse cx="82" cy="38" rx="48" ry="5" fill="none" stroke="white" strokeWidth="0.5" opacity="0.3" />
       </svg>
+      </div>
     </div>
   );
 }
